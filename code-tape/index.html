@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CodeTape – MythGear / Fox’s Anvil Commons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #05070a;
+      --card: #11141b;
+      --accent: #9be38c;
+      --accent-soft: #2f4633;
+      --text-main: #f4f4f4;
+      --text-soft: #c6c6c6;
+      --border-soft: #2b3240;
+      --code-bg: #05080f;
+      --max-width: 800px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #151a23 0, #05070a 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .page {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 32px 16px 48px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, var(--card), #080a0f);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      padding: 24px 20px 28px;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(155, 227, 140, 0.08);
+      border: 1px solid rgba(155, 227, 140, 0.35);
+      color: var(--accent);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(155, 227, 140, 0.9);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 1.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-top: 1.8rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 0.98rem;
+      color: var(--text-soft);
+      margin: 0.5rem 0 0.4rem;
+    }
+
+    strong { color: #ffffff; }
+
+    .quote {
+      margin: 0.9rem 0;
+      padding: 10px 14px;
+      border-left: 3px solid var(--accent);
+      background: rgba(155, 227, 140, 0.03);
+      font-style: italic;
+    }
+
+    ul {
+      margin: 0.4rem 0 0.6rem 1.4rem;
+      padding: 0;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+    }
+
+    li { margin: 0.2rem 0; }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 0.5rem;
+    }
+
+    .pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text-soft);
+    }
+
+    .footer {
+      margin-top: 1.6rem;
+      font-size: 0.86rem;
+      color: #8e93a1;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      padding-top: 0.9rem;
+    }
+
+    .highlight { color: var(--accent); }
+
+    @media (min-width: 720px) {
+      .card { padding: 28px 28px 30px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page" aria-labelledby="title">
+    <section class="card">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        MythGear • Fox’s Anvil Commons
+      </div>
+
+      <h1 id="title">CodeTape</h1>
+
+      <p>
+        CodeTape lives in two layers—one symbolic, one practical—both rooted
+        in care, reciprocity, and the ethics of the commons.
+      </p>
+
+      <div class="pill-list">
+        <span class="pill">Commons</span>
+        <span class="pill">Open Hardware</span>
+        <span class="pill">Stories</span>
+        <span class="pill">Movement</span>
+        <span class="pill">Sensors</span>
+        <span class="pill">Field Kits</span>
+      </div>
+
+      <h2>1. A Symbol</h2>
+      <p>
+        CodeTape can be written on lessons, stories, drawings, games, movement
+        practices, recipes, and simple inventions to say:
+      </p>
+      <p class="quote">
+        <strong>“This is part of the commons. Use it, adapt it, share it, and
+        leave the path better than you found it.”</strong>
+      </p>
+      <p>
+        It is not a contract. It is a gesture—an act of generosity instead of
+        gatekeeping.
+      </p>
+      <p>
+        Anything marked with CodeTape quietly asks:
+      </p>
+      <ul>
+        <li><strong>Do not extract.</strong></li>
+        <li><strong>Do not hoard.</strong></li>
+        <li><strong>Share with humility.</strong></li>
+        <li><strong>Honor the people and places the work came from.</strong></li>
+        <li><strong>Return more than you take.</strong></li>
+      </ul>
+
+      <h2>2. A Toolkit</h2>
+      <p>
+        CodeTape is also a low-cost, community-owned framework for building
+        open, repairable tools that listen to land, sea, and weather. It was
+        conceived as a gift of remembrance and reciprocity, meant to be copied,
+        rebuilt, and localized.
+      </p>
+      <p>
+        Anything built with CodeTape is expected to:
+      </p>
+      <ul>
+        <li>remain open-source,</li>
+        <li>stay in the commons,</li>
+        <li>be guided by local stewardship,</li>
+        <li>serve ecosystems and future generations.</li>
+      </ul>
+
+      <p>
+        In practice, this side of CodeTape includes:
+      </p>
+      <ul>
+        <li><strong>Patterns</strong> – strips, paths, and story circuits</li>
+        <li><strong>Schematics</strong> – micro-nodes and safe connectors</li>
+        <li><strong>Classroom Kits</strong> – guides, cards, and activities</li>
+        <li><strong>Materials</strong> – sustainable, low-cost options</li>
+        <li><strong>Archive</strong> – sketches and evolution notes</li>
+      </ul>
+
+      <h2>Why Two Layers?</h2>
+      <p>
+        Because the world needs both:
+      </p>
+      <ul>
+        <li>
+          A <strong>symbol</strong> anyone can use instantly, with no forms and
+          no fear.
+        </li>
+        <li>
+          A <strong>toolkit</strong> communities can use to build real devices
+          that protect and restore the places they love.
+        </li>
+      </ul>
+      <p>
+        Both grow from the same soil:
+        <span class="highlight">reciprocity, openness, stewardship, and remembrance.</span>
+      </p>
+
+      <h2>How to Use CodeTape</h2>
+      <p><strong>As a symbol:</strong></p>
+      <ul>
+        <li>
+          Write “CodeTape” on your work, optionally with<br />
+          <em>“Offered freely as part of the commons. Adapt and share with care.”</em>
+        </li>
+      </ul>
+
+      <p><strong>As a toolkit:</strong></p>
+      <ul>
+        <li>
+          Explore the patterns, schematics, and material guides in this
+          repository.
+        </li>
+        <li>Remix them for your context.</li>
+        <li>Share them back into the commons.</li>
+      </ul>
+
+      <h2>License</h2>
+      <p>
+        © 2025 JH Durbin<br />
+        Licensed under <strong>CC BY-SA 4.0</strong>.
+      </p>
+
+      <div class="footer">
+        <p>
+          CodeTape is both a small open gate and a working set of tools.
+          A gesture and a blueprint. A gift and a beginning.
+        </p>
+        <p>
+          If it helps you remember, protect, or restore the places you love,
+          you are using it exactly as intended.
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
