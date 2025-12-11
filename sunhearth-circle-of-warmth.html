@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MythGear · Micro-Radiant Heat Inquiry (The SunHearth)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A MythGear classroom inquiry into micro-radiant heat, safety, and ancestral ingenuity. Designed for supervised, sensor-based exploration, not as a DIY home heater.">
+
+  <style>
+    :root {
+      --bg: #05070b;
+      --bg-soft: #0b111a;
+      --card: #111827;
+      --card-soft: #161f2e;
+      --accent: #fbbf24;
+      --accent-soft: #fde68a;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-sm: 10px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 42%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 16px 48px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.9);
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      margin: 6px 0;
+      letter-spacing: 0.03em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0.25rem auto 0;
+      font-size: 0.95rem;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 800px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 65%);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 18px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin: 0 0 8px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+    }
+
+    h3 {
+      font-size: 0.98rem;
+      margin: 16px 0 6px;
+      color: var(--accent-soft);
+    }
+
+    p {
+      margin: 6px 0;
+      font-size: 0.95rem;
+    }
+
+    ul, ol {
+      margin: 6px 0 8px 1.1rem;
+      padding: 0;
+      font-size: 0.93rem;
+    }
+
+    .tagline {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 2px 4px 2px 0;
+    }
+
+    .callout {
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(248, 250, 252, 0.12);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7));
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    .callout strong {
+      color: var(--accent-soft);
+    }
+
+    .safety {
+      border-color: rgba(248, 113, 113, 0.6);
+      background: linear-gradient(135deg, rgba(127, 29, 29, 0.9), rgba(24, 24, 27, 0.9));
+    }
+
+    .codeish {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.85rem;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      overflow-x: auto;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        MythGear · Discovery Mode · Classroom Inquiry
+      </div>
+      <h1>Circle of Warmth · Micro-Radiant Heat</h1>
+      <p class="subtitle">
+        A supervised classroom exploration of heat, geometry, and ancestral ingenuity — using a single small flame, careful sensors, and a lot of curiosity.
+      </p>
+    </header>
+
+    <main>
+      <!-- Left column: Story + Lesson Flow -->
+      <section>
+        <article class="card">
+          <h2>Origin Story</h2>
+          <p class="tagline">Professor Mitsyfibbins arrives shivering. The room is a little cold. The questions are very warm.</p>
+          <p>
+            This MythGear module began with a simple observation: even a small flame can feel surprisingly warm when it is guided by the right shapes, surfaces, and stories. Rather than publishing “DIY heater” instructions, Circle of Warmth turns this into a <strong>guided science inquiry</strong> about how heat moves and how humans have learned to steward it with care.
+          </p>
+          <p>
+            The result is a lesson where students measure, notice, and reflect — connecting <strong>thermodynamics, safety, ancestral knowledge, geometry, and embodiment</strong> in one shared experience.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Learning Goals</h2>
+          <p>By the end of Circle of Warmth, students will be able to:</p>
+          <ul>
+            <li>Describe the difference between <strong>conduction, convection, and radiation</strong> in simple terms.</li>
+            <li>Explain why curved or parabolic shapes can change how we feel <strong>heat, light, and sound</strong>.</li>
+            <li>Define <strong>safe</strong>, <strong>clean</strong>, and <strong>efficient</strong> in the context of small, supervised flames.</li>
+            <li>Use sensors or simple tools to <strong>measure and record</strong> temperature and warmth.</li>
+            <li>Reflect on how ancestral and low-tech solutions have helped people stay warm with very little fuel.</li>
+          </ul>
+          <div>
+            <span class="pill">Thermodynamics</span>
+            <span class="pill">Geometry</span>
+            <span class="pill">Safety</span>
+            <span class="pill">Ancestral Engineering</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Lesson Flow · Circle of Warmth</h2>
+          <ol>
+            <li><strong>Arrival &amp; Atmosphere</strong> – Professor Mitsyfibbins enters shivering and asks, “Are you not cold?” The class names what they notice about the room and their own bodies.</li>
+            <li><strong>Sensors &amp; First Readings</strong> – Students receive simple thermometers or IR sensors and take baseline readings of hands, walls, desks, and other objects.</li>
+            <li><strong>Silent Object Table</strong> – A bowl, small candle (unlit), stones, foil, a metal cup, and a hoodie are placed where everyone can see them. Students share hypotheses: how might these relate to warmth?</li>
+            <li><strong>Key Words</strong> – On the board: <strong>SAFE · CLEAN · EFFICIENT</strong>. Students co-define each term in the context of fire and air.</li>
+            <li><strong>Dangerous vs Safe Fuels</strong> – Short, teacher-guided discussion on what should never be burned and why (plastics, mystery liquids, large piles of paper, etc.). Emphasis: <em>this lesson does not invent new fuels</em>.</li>
+            <li><strong>Parabolas &amp; Hoodies</strong> – Students test how light reflects in a curved bowl and how sound changes when someone wears a hood. They connect hood, bowl, and dome as cousin shapes.</li>
+            <li><strong>Teacher Demonstration Flame</strong> – The teacher lights a single small candle in a stable holder, on a non-flammable surface, inside a reflective bowl. Students measure warmth at different distances and angles.</li>
+            <li><strong>Heat Dome Variation</strong> – A simple reflective “dome” (e.g., aluminum foil) is added above the demonstration setup. Students repeat measurements and compare changes.</li>
+            <li><strong>Reflection &amp; Closure</strong> – The class returns to SAFE · CLEAN · EFFICIENT and writes or shares one insight about how a tiny flame can share warmth when guided wisely.</li>
+          </ol>
+          <div class="callout">
+            <strong>Note:</strong> At all times, the teacher is the only person who lights, moves, or extinguishes the flame. Students observe, feel at a safe distance, and measure — they do not handle fire.
+          </div>
+        </article>
+      </section>
+
+      <!-- Right column: Safety + Scripts + Snippets -->
+      <aside>
+        <article class="card safety">
+          <h2>Safety Charter</h2>
+          <p><strong>This module is a supervised classroom inquiry, not a DIY home heater guide.</strong></p>
+          <ul>
+            <li>The teacher is the only person who lights, moves, or extinguishes the flame.</li>
+            <li>The flame stays on a stable, non-flammable surface (stone, metal, ceramic), with clear space around it.</li>
+            <li>No paper, cloth, hair, or plastic hangs over or near the flame.</li>
+            <li>The flame is never left unattended. If the teacher must step away, the flame is extinguished first.</li>
+            <li>Ventilation is provided (open door/window), and only familiar, low-smoke fuels (e.g., a single small candle) are used.</li>
+            <li>Students are reminded that this setup is for <strong>classroom exploration only</strong> and should not be reproduced at home without adult supervision and appropriate safety measures.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Opening Script (Professor Mitsyfibbins)</h2>
+          <p class="codeish">
+            “Brrrr… oh my. Is anyone else cold today?<br><br>
+            Good. That means your bodies are awake and paying attention.<br>
+            Today, we’re going to study something very ordinary and very magical: <strong>warmth</strong>.<br><br>
+            Scientists don’t just feel warmth — we also measure it. Today, <em>you</em> are the scientists. These are your tools.”
+          </p>
+          <p>
+            From here, the professor hands out sensors, invites first readings, and slowly reveals how the bowl, hood, foil, and tiny flame will become part of one shared inquiry.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Mini Experiment · Hood &amp; Parabola</h2>
+          <p>
+            Students work in pairs:
+          </p>
+          <ol>
+            <li>One student wears a hoodie with the hood down; the partner speaks softly from a short distance.</li>
+            <li>The listener pulls the hood up and repeats the test.</li>
+            <li>Together, they describe how sound and feeling change and connect that to curved shapes like bowls, domes, and shells.</li>
+          </ol>
+          <p>
+            This experiment gently links <strong>geometry, acoustics, and embodiment</strong> in a way students remember long after the class ends.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Closing Ritual · Circle of Warmth</h2>
+          <p class="codeish">
+            “Look at this little flame we’ve been studying.<br>
+            It’s just one small light.<br><br>
+            But what did it do today?<br><br>
+            Even a tiny flame can share warmth<br>
+            if we guide it with care.<br><br>
+            Take one breath and notice the warmth in your own chest.<br>
+            That is also a kind of fire.<br>
+            When we care about each other,<br>
+            we help keep that fire alive.”
+          </p>
+        </article>
+      </aside>
+    </main>
+
+    <p class="footer-note">
+      MythGear · Circle of Warmth is shared as an educational resource for supervised classroom inquiry.
+      It is not intended or offered as a substitute for building or using heating devices in homes or shelters.
+    </p>
+  </div>
+</body>
+</html>
