@@ -4,415 +4,223 @@
   <meta charset="UTF-8" />
   <title>MythGear Commons</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="MythGear Commons is an open hardware / open storywork lab for movement medicine: gloves, shoes, field-kits, and resonance tools.">
+  <meta name="description" content="MythGear Commons is an open hardware / open storywork lab for movement medicine: gloves, shoes, cards, field-kits, and resonance tools.">
 
   <style>
     :root {
       --bg: #05070b;
-      --bg-soft: #0b1016;
       --card-bg: #0f172a;
-      --card-soft: #111827;
       --accent: #fbbf24;
       --accent-soft: #fde68a;
       --text: #e5e7eb;
       --muted: #9ca3af;
       --border: #1f2937;
-      --shadow-soft: 0 22px 55px rgba(0, 0, 0, 0.75);
+      --shadow: 0 22px 55px rgba(0, 0, 0, 0.75);
       --radius-lg: 18px;
       --radius-pill: 999px;
       --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: var(--font-main);
       color: var(--text);
       background:
         radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.2), transparent 55%),
-        radial-gradient(circle at top, #020617 0, #020617 42%, #020617 100%);
+        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 55%),
+        #020617;
+      padding: 24px 14px;
       display: flex;
-      align-items: stretch;
       justify-content: center;
-      padding: 24px 14px 32px;
     }
 
     .page {
       width: 100%;
       max-width: 980px;
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
+      background: linear-gradient(145deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
       border-radius: 24px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      box-shadow: var(--shadow-soft);
-      padding: 20px 18px 26px;
+      border: 1px solid rgba(55,65,81,0.9);
+      box-shadow: var(--shadow);
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 22px;
     }
 
-    @media (min-width: 900px) {
-      .page {
-        padding: 26px 28px 32px;
-        gap: 22px;
-      }
-    }
-
-    header {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .top-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .title-block h1 {
-      font-size: clamp(1.9rem, 3vw, 2.3rem);
-      letter-spacing: 0.09em;
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin: 0 0 4px;
     }
 
-    .title-block .byline {
+    header .byline {
+      color: var(--muted);
       font-size: 0.9rem;
-      color: var(--muted);
+      margin-top: 4px;
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      font-size: 0.74rem;
+    header p {
+      margin-top: 10px;
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-    }
-
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 14px rgba(251, 191, 36, 0.9);
-    }
-
-    .tagline {
-      font-size: 0.98rem;
-      color: var(--muted);
-      max-width: 640px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr);
-      gap: 18px;
-    }
-
-    @media (min-width: 900px) {
-      .grid {
-        grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-      }
     }
 
     .card {
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95));
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.9), rgba(15,23,42,0.98));
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      padding: 16px 15px;
+      padding: 16px 18px;
     }
 
-    @media (min-width: 900px) {
-      .card {
-        padding: 18px 18px;
-      }
-    }
-
-    .card h2 {
-      font-size: 1.1rem;
-      margin: 0 0 8px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #f9fafb;
-    }
-
-    .card p {
-      margin: 0 0 0.75em;
-      font-size: 0.96rem;
-    }
-
-    .card ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      font-size: 0.95rem;
-    }
-
-    .card li + li {
-      margin-top: 0.25em;
-    }
-
-    .pill-row {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .pill {
-      padding: 3px 10px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .modules-grid {
+    .modules {
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 10px;
-      margin-top: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
     }
 
-    @media (min-width: 700px) {
-      .modules-grid {
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      }
-    }
-
-    .module-card {
-      position: relative;
-      border-radius: 14px;
+    .module {
       border: 1px solid var(--border);
-      padding: 12px 11px 13px;
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: rgba(15,23,42,0.95);
     }
 
-    .module-title {
-      font-size: 0.98rem;
-      font-weight: 600;
-      margin: 0 0 2px;
+    .module h3 {
+      margin: 0;
+      font-size: 1rem;
     }
 
-    .module-tag {
-      font-size: 0.76rem;
+    .module .tag {
+      font-size: 0.75rem;
       color: var(--muted);
       margin-bottom: 6px;
     }
 
-    .module-card p {
-      margin: 0 0 6px;
+    .module p {
       font-size: 0.9rem;
       color: #d1d5db;
     }
 
-    .module-links a {
-      display: inline-block;
-      font-size: 0.82rem;
-      text-decoration: none;
+    .module a {
+      font-size: 0.85rem;
       color: var(--accent-soft);
-      margin-right: 10px;
+      text-decoration: none;
     }
 
-    .module-links a:hover {
+    .module a:hover {
       text-decoration: underline;
-    }
-
-    .folder-map {
-      margin: 0.3rem 0 0;
-      padding-left: 0;
-      list-style: none;
-      font-size: 0.89rem;
-    }
-
-    .folder-map li {
-      margin-bottom: 3px;
     }
 
     .folder-map code {
       font-family: var(--font-mono);
-      font-size: 0.86rem;
-      padding: 1px 5px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(55,65,81,0.9);
       border-radius: 6px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-    }
-
-    .license-box {
-      margin-top: 6px;
-      padding: 10px 11px;
-      border-radius: 12px;
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .license-box strong {
-      color: #e5e7eb;
+      padding: 2px 6px;
     }
 
     footer {
-      margin-top: 4px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
       font-size: 0.8rem;
       color: var(--muted);
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
       justify-content: space-between;
-    }
-
-    footer span {
-      opacity: 0.9;
-    }
-
-    a {
-      color: var(--accent-soft);
+      flex-wrap: wrap;
+      gap: 8px;
+      border-top: 1px solid rgba(31,41,55,0.9);
+      padding-top: 10px;
     }
   </style>
 </head>
+
 <body>
   <div class="page">
+
     <header>
-      <div class="top-row">
-        <div class="title-block">
-          <h1>MythGear Commons</h1>
-          <div class="byline">Elumannín + Jacobo</div>
-        </div>
-        <div class="badge">
-          <span class="badge-dot"></span>
-          Open hardware · Open storywork
-        </div>
-      </div>
-      <p class="tagline">
-        An open hardware / open storywork lab for movement medicine: gloves, shoes, field-kits, and resonance tools that help people listen with their whole bodies – in the garden, on the trail, and in the city.
+      <h1>MythGear Commons</h1>
+      <div class="byline">Elumannín + Jacobo</div>
+      <p>
+        An open hardware / open storywork lab for movement medicine —
+        gloves, shoes, cards, and resonance tools that help people listen
+        with their whole bodies.
       </p>
     </header>
 
-    <div class="grid">
-      <section class="card">
-        <h2>Purpose</h2>
-        <ul>
-          <li>Design gear that supports somatic literacy – learning through movement, breath, and touch.</li>
-          <li>Keep everything as commons-friendly as possible: repairable, remixable, and shareable.</li>
-          <li>Bridge MythWear, RageDance, CodeTape, and other Flower Road projects.</li>
-        </ul>
-
-        <div class="pill-row">
-          <span class="pill">movement medicine</span>
-          <span class="pill">open hardware</span>
-          <span class="pill">commons</span>
-        </div>
-
-        <h2 style="margin-top:16px;">Design Principles</h2>
-        <ul>
-          <li><strong>Jute &amp; Grit</strong> – favor natural fibers, tactile feedback, and honest materials.</li>
-          <li><strong>Multi-use</strong> – every element should do more than one thing when possible.</li>
-          <li><strong>Local repair</strong> – designs should be fixable with simple tools and community skill.</li>
-          <li><strong>Open patterns</strong> – share patterns and blueprints under Creative Commons licenses.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Modules</h2>
-        <div class="modules-grid">
-          <div class="module-card">
-            <div class="module-title">CodeTape</div>
-            <div class="module-tag">Resonance paths</div>
-            <p>
-              Low-cost sensing patterns and conductive paths for tracking pulse, pressure, or presence
-              across MythWear and MythGear projects.
-            </p>
-            <div class="module-links">
-              <a href="code-tape/">Open folder ↗</a>
-            </div>
-          </div>
-
-          <div class="module-card">
-            <div class="module-title">MythGear Gloves v1</div>
-            <div class="module-tag">Resonance-cup palms</div>
-            <p>
-              Gloves for listening through contact: resonance cups in the palms, jute + grit textures,
-              and patterns tuned for RageDance and field practice.
-            </p>
-            <div class="module-links">
-              <a href="gloves/">Gloves folder ↗</a>
-            </div>
-          </div>
-
-          <div class="module-card">
-            <div class="module-title">MythGear Shoes v1</div>
-            <div class="module-tag">Trail &amp; RageDance</div>
-            <p>
-              Jute soles, Achilles rail, and resonance plates for grounding on the trail,
-              in the garden, and in the Night Garden sequences. (planned)
-            </p>
-            <div class="module-links">
-              <a href="shoes/">Shoes folder ↗</a>
-            </div>
-          </div>
-
-          <div class="module-card">
-            <div class="module-title">SunHearth · Circle of Warmth</div>
-            <div class="module-tag">Micro-radiant heat inquiry</div>
-            <p>
-              A micro-flame teaching instrument for <strong>supervised classroom inquiry</strong>
-              into micro-radiant heat, geometry, ancestral ingenuity, and safety.
-            </p>
-            <div class="module-links">
-              <a href="sunhearth/sunhearth-circle-of-warmth.html">Teacher page ↗</a>
-              <a href="sunhearth/sunhearth-lore.html">Lore ↗</a>
-              <a href="sunhearth/sunhearth-first-sunhearth.html">Story seed ↗</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+    <section class="card">
+      <h2>Purpose</h2>
+      <ul>
+        <li>Support somatic literacy through touch, movement, and presence</li>
+        <li>Design gear that is repairable, remixable, and commons-friendly</li>
+        <li>Bridge MythWear, RageDance, CodeTape, and Flower Road projects</li>
+      </ul>
+    </section>
 
     <section class="card">
-      <h2>Folder Map</h2>
-      <ul class="folder-map">
-        <li><code>code-tape/</code> – patterns, wiring paths, and sensing layouts.</li>
-        <li><code>gloves/</code> – MythGear Gloves v1 and future variants. <span style="color:var(--muted);">(this is where we are going next)</span></li>
-        <li><code>shoes/</code> – MythGear Shoes v1 and related inserts. <span style="color:var(--muted);">(coming soon)</span></li>
-        <li><code>sunhearth/</code> – SunHearth lore, Circle of Warmth lesson pages, rhyme, and safety materials.</li>
-      </ul>
+      <h2>Modules</h2>
+      <div class="modules">
 
-      <div class="license-box">
-        <strong>License · Creative Commons BY-NC-SA 4.0</strong><br />
-        Unless otherwise noted, designs in this repo are shared under a
-        <em>Creative Commons Attribution–NonCommercial–ShareAlike 4.0 International</em> license (CC BY-NC-SA 4.0).<br /><br />
-        You are free to copy, share, and adapt the materials here for non-commercial use,
-        as long as you credit <strong>“Elumannín + Jacobo”</strong>, indicate if changes were made,
-        and share any derivative works under the same license.<br /><br />
-        For uses outside these terms (commercial manufacture, branded resale, or proprietary integration),
-        please contact the authors to discuss an agreement rooted in stewardship and reciprocity.
+        <div class="module">
+          <h3>CodeTape</h3>
+          <div class="tag">Resonance paths</div>
+          <p>Low-cost sensing patterns and conductive paths for presence, pressure, and pulse.</p>
+          <a href="code-tape/">Open folder ↗</a>
+        </div>
+
+        <div class="module">
+          <h3>MythGear Gloves v1</h3>
+          <div class="tag">Hands listen</div>
+          <p>Resonance-cup palms and jute textures for listening through contact.</p>
+          <a href="gloves/">Open folder ↗</a>
+        </div>
+
+        <div class="module">
+          <h3>MythGear Shoes v1</h3>
+          <div class="tag">Feet remember · in progress</div>
+          <p>Minimalist movement shoes with Achilles rail and resonance plate.</p>
+          <a href="shoes/">Open folder ↗</a>
+        </div>
+
+        <div class="module">
+          <h3>MythGear Cards</h3>
+          <div class="tag">Field micro-sequences</div>
+          <p>Short, printable cards for listening, grounding, and pulse awareness.</p>
+          <a href="cards/">Open folder ↗</a>
+        </div>
+
+        <div class="module">
+          <h3>SunHearth</h3>
+          <div class="tag">Circle of Warmth</div>
+          <p>Micro-radiant heat inquiry for supervised classroom and field learning.</p>
+          <a href="sunhearth/">Open folder ↗</a>
+        </div>
+
       </div>
+    </section>
+
+    <section class="card">
+      <h2>Docs</h2>
+      <ul class="folder-map">
+        <li><a href="docs/field-protocol.md">Field Protocol ↗</a></li>
+        <li><a href="docs/mythgear-levels.md">MythGear Levels ↗</a></li>
+        <li><a href="docs/mythgear-set.md">MythGear Set ↗</a></li>
+      </ul>
     </section>
 
     <footer>
       <span>MythGear Commons · Flower Road</span>
-      <span>Built as open hardware / open storywork for somatic literacy.</span>
+      <span>CC BY-NC-SA 4.0 · Built for shared stewardship</span>
     </footer>
+
   </div>
 </body>
 </html>
