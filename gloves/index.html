@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MythGear Gloves v1 · Hands Listen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MythGear Gloves v1 — resonance-cup palms for micro-listening through contact. Module page for MythGear Commons.">
+
+  <style>
+    :root {
+      --bg: #05070b;
+      --bg-soft: #0b1016;
+      --card-bg: #0f172a;
+      --card-soft: #111827;
+      --accent: #fbbf24;
+      --accent-soft: #fde68a;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --shadow-soft: 0 22px 55px rgba(0, 0, 0, 0.75);
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-main);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 55%),
+        radial-gradient(circle at top, #020617 0, #020617 45%, #020617 100%);
+      display: flex;
+      justify-content: center;
+      padding: 24px 14px 34px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1040px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
+      border-radius: 24px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 18px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    @media (min-width: 900px) {
+      .page { padding: 26px 28px 32px; gap: 22px; }
+    }
+
+    header { display: flex; flex-direction: column; gap: 10px; }
+
+    .top-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .title-block h1 {
+      font-size: clamp(1.7rem, 3vw, 2.25rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 4px;
+    }
+
+    .title-block .byline {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(251, 191, 36, 0.9);
+    }
+
+    .tagline {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0;
+    }
+
+    a { color: var(--accent-soft); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .crumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .crumbs code {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 1px 6px;
+      border-radius: 6px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 900px) {
+      .grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr); gap: 18px; }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px 15px;
+    }
+
+    @media (min-width: 900px) {
+      .card { padding: 18px 18px; }
+    }
+
+    .card h2 {
+      font-size: 1.06rem;
+      margin: 0 0 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f9fafb;
+    }
+
+    .card h3 {
+      margin: 14px 0 8px;
+      font-size: 0.98rem;
+      letter-spacing: 0.04em;
+      color: #f3f4f6;
+    }
+
+    .card p {
+      margin: 0 0 0.75em;
+      font-size: 0.96rem;
+      color: #e5e7eb;
+    }
+
+    .card ul, .card ol {
+      margin: 0;
+      padding-left: 1.1rem;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+    }
+
+    .card li + li { margin-top: 0.3em; }
+
+    .pill-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pill {
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .callout {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: rgba(2, 6, 23, 0.45);
+      padding: 12px 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--accent-soft);
+      font-size: 0.88rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .link-btn:hover { text-decoration: none; border-color: rgba(251, 191, 36, 0.55); }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 700px) {
+      .mini-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    }
+
+    .mini {
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.92);
+      padding: 12px 12px;
+    }
+
+    .mini strong { color: #f3f4f6; }
+
+    .muted { color: var(--muted); }
+
+    footer {
+      margin-top: 2px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      justify-content: space-between;
+    }
+
+    .kbd {
+      font-family: var(--font-mono);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      border-bottom-color: rgba(55, 65, 81, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      padding: 1px 6px;
+      border-radius: 6px;
+      color: #d1d5db;
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="top-row">
+        <div class="title-block">
+          <h1>MythGear Gloves v1</h1>
+          <div class="byline">Elumannín + Jacobo</div>
+        </div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Hands listen · v1 in progress
+        </div>
+      </div>
+
+      <p class="tagline">
+        A listening tool you wear: resonance-cup palms + jute grit textures for micro-contact, micro-movement, and field practice.
+      </p>
+
+      <div class="crumbs">
+        <span><a href="../index.html">← MythGear Commons</a></span>
+        <span>·</span>
+        <span><code>gloves/</code></span>
+        <span class="muted">·</span>
+        <span class="muted">module page</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Start Here</h2>
+        <p>
+          This module is the “hands” half of the MythGear Set:
+          <strong>Hands listen. Feet remember.</strong>
+        </p>
+
+        <div class="links">
+          <a class="link-btn" href="./resonance-gloves-v1.md">Open build spec ↗</a>
+          <a class="link-btn" href="../cards/card-hands-listen.md">Hands Listen card ↗</a>
+          <a class="link-btn" href="../docs/mythgear-set.md">MythGear Set doc ↗</a>
+        </div>
+
+        <h3>Micro-listening sequence</h3>
+        <ol>
+          <li>Place palm on bark, stone, metal, or ground.</li>
+          <li>Soften the hand. Let weight settle.</li>
+          <li>Wait for a temperature shift or faint vibration.</li>
+          <li>Add 1–2 mm micro-movements.</li>
+          <li>Notice changes in: buzz · density · echo · texture.</li>
+          <li>Switch hands.</li>
+          <li>Repeat on a new surface.</li>
+        </ol>
+
+        <div class="pill-row">
+          <span class="pill">somatic literacy</span>
+          <span class="pill">micro-movement</span>
+          <span class="pill">field practice</span>
+          <span class="pill">rageDance compatible</span>
+        </div>
+
+        <h3>Design intent</h3>
+        <p class="muted" style="margin-bottom:0;">
+          You started with “<strong>32 points/joints + wrists</strong>.” This build compresses complexity into
+          a smaller set of reliable “listening moves” — <strong>reduce to ~12</strong> and make them fine-tunable.
+        </p>
+      </section>
+
+      <aside class="card">
+        <h2>Core Architecture</h2>
+
+        <div class="mini-grid">
+          <div class="mini">
+            <p style="margin:0 0 6px;"><strong>Palm</strong> · resonance cup</p>
+            <p class="muted" style="margin:0;">
+              Shallow concavity (target 3–5 mm) that “hears” vibration and returns a note through the hand.
+              Optional porous jute lining. Optional removable disk.
+            </p>
+          </div>
+
+          <div class="mini">
+            <p style="margin:0 0 6px;"><strong>Outer palm</strong> · jute & grit</p>
+            <p class="muted" style="margin:0;">
+              Grip + abrasion layer with flex channels aligned to palm lines for micro-movement fidelity.
+            </p>
+          </div>
+
+          <div class="mini">
+            <p style="margin:0 0 6px;"><strong>Back of hand</strong> · breathable</p>
+            <p class="muted" style="margin:0;">
+              Woven textile. Optional “pulse lane” (future CodeTape integration).
+            </p>
+          </div>
+
+          <div class="mini">
+            <p style="margin:0 0 6px;"><strong>Closure</strong> · strap system</p>
+            <p class="muted" style="margin:0;">
+              Field-repairable. Candidates: velcro / button / “claw” tab. (Notes: “straps like the ones from Japan.”)
+            </p>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:12px;">
+          <strong>Reminder</strong><br/>
+          Hands are not gripping. Hands are listening.
+        </div>
+      </aside>
+    </div>
+
+    <section class="card">
+      <h2>Movement Map</h2>
+      <p class="muted">
+        The glove is not only “hand.” It is a pathway that can climb:
+        <strong>wrist → elbow → shoulder</strong> (and even to <strong>waist</strong>) so micro-contact becomes whole-body calibration.
+      </p>
+
+      <div class="mini-grid">
+        <div class="mini">
+          <p style="margin:0 0 6px;"><strong>Reduce to ~12</strong> micro-moves</p>
+          <ul style="margin:0; padding-left: 1.1rem;">
+            <li>Press / release</li>
+            <li>Feather slide (1–2 mm)</li>
+            <li>Circle (micro)</li>
+            <li>Rocking (heel of palm ↔ fingers)</li>
+            <li>Twist (soft)</li>
+            <li>Tap (stone-tap variant)</li>
+            <li>Hover (near-contact)</li>
+            <li>Pulse lane trace (future)</li>
+          </ul>
+          <p class="muted" style="margin:8px 0 0;">
+            We can refine the “official 12” as you test.
+          </p>
+        </div>
+
+        <div class="mini">
+          <p style="margin:0 0 6px;"><strong>Why the reduction matters</strong></p>
+          <p class="muted" style="margin:0;">
+            Fewer moves = more repeatable listening, less performance noise.
+            The glove becomes a training instrument, not a “tech glove.”
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Palm Pad Questions</h2>
+      <p class="muted">
+        From your notes: palm pad <em>material</em> + <em>size</em>. These are v1 decision points.
+      </p>
+
+      <div class="mini-grid">
+        <div class="mini">
+          <p style="margin:0 0 6px;"><strong>Materials to test</strong></p>
+          <ul style="margin:0; padding-left: 1.1rem;">
+            <li><strong>Coconut coir</strong> layer (texture + breath)</li>
+            <li><strong>Bamboo</strong> thin disk (crisp “note”)</li>
+            <li><strong>Carbon fiber</strong> (sharp response, but watch comfort + story-fit)</li>
+            <li><strong>Wood</strong> (birch/bamboo) sealed (warm resonance)</li>
+            <li><strong>Silicone</strong> (soft damping option)</li>
+          </ul>
+        </div>
+
+        <div class="mini">
+          <p style="margin:0 0 6px;"><strong>Size ranges</strong></p>
+          <ul style="margin:0; padding-left: 1.1rem;">
+            <li>Small cup: ~18–22 mm</li>
+            <li>Medium cup: ~22–28 mm</li>
+            <li>Large cup: ~28–34 mm</li>
+          </ul>
+          <p class="muted" style="margin:8px 0 0;">
+            (These are placeholders — we’ll lock them after your first fit test.)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Field Notes Prompt</h2>
+      <p class="muted">
+        Your question: “actual vs perceived capacity” (and the “60% claimed” note).
+        Let’s convert that into a neutral, testable prompt:
+      </p>
+
+      <div class="callout">
+        <strong>Prompt</strong><br/>
+        When someone claims capability (“I can feel everything / I’m trained / I’m special forces”),
+        can the glove help us check that claim gently—by shifting attention from performance to repeatable listening?
+        <br/><br/>
+        <span class="muted">
+          Metric: can they repeat the same micro-sequence three times on three surfaces and describe changes with consistency?
+        </span>
+      </div>
+    </section>
+
+    <footer>
+      <span>MythGear Gloves v1 · <span class="kbd">gloves/index.html</span></span>
+      <span>CC BY-NC-SA 4.0 (unless otherwise noted)</span>
+    </footer>
+  </div>
+</body>
+</html>
