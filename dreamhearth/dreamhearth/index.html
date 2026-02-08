@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DreamHearth — A Right to Rest</title>
+  <meta name="description" content="DreamHearth is a commons-based bedding system: a place where nothing is asked of you but rest." />
+
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --panel: #111824;
+      --text: #e9eef5;
+      --muted: #b7c2cf;
+      --line: rgba(233,238,245,.16);
+      --accent: #bfe7ff; /* not relied upon for meaning */
+    }
+    *{ box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    a{ color: var(--text); text-decoration: underline; text-underline-offset: .2em; }
+    a:focus{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    header{
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+    }
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 28px 18px; }
+
+    .topbar{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      padding: 10px 0;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:4px;
+    }
+    .brand h1{
+      font-size: 28px; margin:0;
+      letter-spacing: .2px;
+    }
+    .tagline{
+      margin:0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    nav{
+      display:flex; gap:12px; flex-wrap:wrap;
+      align-items:center;
+    }
+    nav a{
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    nav a:hover{
+      background: rgba(255,255,255,.04);
+    }
+
+    main{ padding: 18px 0 44px; }
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      margin: 14px 0;
+    }
+    h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    p{ margin: 10px 0; }
+    ul{ margin: 10px 0 0 20px; }
+    .quote{
+      border-left: 4px solid var(--line);
+      padding: 10px 14px;
+      color: var(--text);
+      background: rgba(255,255,255,.03);
+      border-radius: 10px;
+    }
+    .muted{ color: var(--muted); }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .pill{
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: rgba(255,255,255,.02);
+    }
+    footer{
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .95em;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <h1>DreamHearth</h1>
+          <p class="tagline">A commons-based bedding system — a right to rest.</p>
+        </div>
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#geometry">Core geometry</a>
+          <a href="#lifecycle">Lifecycle</a>
+          <a href="#ethics">Safety & dignity</a>
+          <a href="./README.md">README</a>
+        </nav>
+      </div>
+
+      <div class="card quote" aria-label="Inscription">
+        <strong>This is a place where nothing is asked of you but rest.</strong>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="about" class="card">
+      <h2>What this is</h2>
+      <p>
+        DreamHearth is a modular “nest + shell” bedding system designed to welcome a human into the world,
+        grow with them, and later return to a tighter nest for aging, recovery, illness, or deep fatigue.
+      </p>
+      <p class="muted">
+        No tracking. No optimization. No restraint. Natural-fiber-forward. Built for repair, adaptation, and dignity.
+      </p>
+    </section>
+
+    <section id="geometry" class="card">
+      <h2>Core geometry</h2>
+      <div class="grid">
+        <div class="pill">
+          <strong>1) The Nest</strong>
+          <p class="muted">Modular pillows/bolsters arranged around the body to support curling, side-sleeping, and turning.</p>
+        </div>
+        <div class="pill">
+          <strong>2) The Shell (head shelter)</strong>
+          <p class="muted">A lowered head-rest with a hooded rim that narrows the visual field and dampens sound—without covering the face.</p>
+        </div>
+        <div class="pill">
+          <strong>3) The Weave</strong>
+          <p class="muted">Optional arm pockets / side folds for easy in/out and movement-friendly containment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="lifecycle" class="card">
+      <h2>Lifecycle configurations</h2>
+      <ul>
+        <li><strong>Arrival (infant):</strong> tighter nest, deeper warmth, softer sound/light.</li>
+        <li><strong>Opening (child):</strong> modular supports, tactile comfort, movement welcomed.</li>
+        <li><strong>Widening (adult):</strong> same geometry with more space; shell becomes a quiet rim.</li>
+        <li><strong>Return (aged / recovering):</strong> tighter nest to reduce effort; gentle orientation cues (texture/seams, not color reliance).</li>
+      </ul>
+    </section>
+
+    <section id="ethics" class="card">
+      <h2>Safety & dignity line (non-negotiable)</h2>
+      <p><strong>DreamHearth must always:</strong></p>
+      <ul>
+        <li>allow easy exit (fail-open)</li>
+        <li>preserve choice and comfort</li>
+        <li>avoid restraint, locking, compression, forced positioning</li>
+        <li>avoid surveillance, sensors, “compliance” framing</li>
+      </ul>
+      <p class="muted">
+        If a “safety feature” violates dignity, it does not belong.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Suggested repo structure</h2>
+      <ul>
+        <li><code>/docs/</code> — principles + notes</li>
+        <li><code>/patterns/</code> — written patterns and material notes</li>
+        <li><code>/configs/</code> — infant/child/adult/return configurations</li>
+        <li><code>/research/</code> — references</li>
+        <li><code>/license/</code> — license text(s)</li>
+      </ul>
+      <p class="muted">Start simple. Let it grow like a hearth grows: one careful addition at a time.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>
+        <strong>DreamHearth</strong> — maintained in the Fox’s Anvil commons.
+        <span class="muted">A place where nothing is asked of you but rest.</span>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
