@@ -2,225 +2,194 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MythGear Commons</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="MythGear Commons is an open hardware / open storywork lab for movement medicine: gloves, shoes, cards, field-kits, and resonance tools.">
+  <title>MythGear Commons</title>
+  <meta name="description" content="MythGear Commons is an open collection of human-scale tools for movement, rest, warmth, and repair." />
 
   <style>
-    :root {
-      --bg: #05070b;
-      --card-bg: #0f172a;
-      --accent: #fbbf24;
-      --accent-soft: #fde68a;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --shadow: 0 22px 55px rgba(0, 0, 0, 0.75);
-      --radius-lg: 18px;
-      --radius-pill: 999px;
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    :root{
+      --bg:#0b0f14;
+      --panel:#111824;
+      --text:#e9eef5;
+      --muted:#b7c2cf;
+      --line:rgba(233,238,245,.16);
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:var(--text); text-decoration:underline; text-underline-offset:.2em;}
+    a:focus{outline:2px solid var(--line); outline-offset:3px;}
+
+    header, footer{border-color:var(--line);}
+    header{border-bottom:1px solid var(--line);}
+    footer{border-top:1px solid var(--line); color:var(--muted); font-size:14px;}
+
+    .wrap{max-width:1000px; margin:0 auto; padding:28px 18px;}
+    h1{margin:0 0 6px; font-size:30px;}
+    h2{margin:0 0 10px; font-size:20px;}
+    p{margin:10px 0;}
+    .muted{color:var(--muted);}
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:20px;
+      margin:18px 0;
     }
 
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: var(--font-main);
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 55%),
-        #020617;
-      padding: 24px 14px;
-      display: flex;
-      justify-content: center;
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+      gap:14px;
+      margin-top:14px;
     }
 
-    .page {
-      width: 100%;
-      max-width: 980px;
-      background: linear-gradient(145deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
-      border-radius: 24px;
-      border: 1px solid rgba(55,65,81,0.9);
-      box-shadow: var(--shadow);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
+    .item{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      background:rgba(255,255,255,.02);
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .item h3{
+      margin:0 0 6px;
+      font-size:17px;
     }
 
-    header .byline {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 4px;
+    nav a{
+      display:inline-block;
+      margin-right:10px;
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      text-decoration:none;
     }
-
-    header p {
-      margin-top: 10px;
-      color: var(--muted);
-      max-width: 700px;
-    }
-
-    h2 {
-      margin: 0 0 10px;
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .card {
-      background: radial-gradient(circle at top left, rgba(15,23,42,0.9), rgba(15,23,42,0.98));
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 16px 18px;
-    }
-
-    .modules {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-    }
-
-    .module {
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px 14px;
-      background: rgba(15,23,42,0.95);
-    }
-
-    .module h3 {
-      margin: 0;
-      font-size: 1rem;
-    }
-
-    .module .tag {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .module p {
-      font-size: 0.9rem;
-      color: #d1d5db;
-    }
-
-    .module a {
-      font-size: 0.85rem;
-      color: var(--accent-soft);
-      text-decoration: none;
-    }
-
-    .module a:hover {
-      text-decoration: underline;
-    }
-
-    .folder-map code {
-      font-family: var(--font-mono);
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(55,65,81,0.9);
-      border-radius: 6px;
-      padding: 2px 6px;
-    }
-
-    footer {
-      font-size: 0.8rem;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-      border-top: 1px solid rgba(31,41,55,0.9);
-      padding-top: 10px;
-    }
+    nav a:hover{background:rgba(255,255,255,.04);}
   </style>
 </head>
 
 <body>
-  <div class="page">
-
-    <header>
+  <header>
+    <div class="wrap">
       <h1>MythGear Commons</h1>
-      <div class="byline">Elumannín + Jacobo</div>
-      <p>
-        An open hardware / open storywork lab for movement medicine —
-        gloves, shoes, cards, and resonance tools that help people listen
-        with their whole bodies.
+      <p class="muted">
+        Open, human-scale tools for movement, rest, warmth, and repair.
       </p>
-    </header>
+      <nav aria-label="Primary">
+        <a href="./README.md">README</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
 
     <section class="card">
-      <h2>Purpose</h2>
-      <ul>
-        <li>Support somatic literacy through touch, movement, and presence</li>
-        <li>Design gear that is repairable, remixable, and commons-friendly</li>
-        <li>Bridge MythWear, RageDance, CodeTape, and Flower Road projects</li>
-      </ul>
+      <h2>What this is</h2>
+      <p>
+        MythGear is a commons of practical, body-centered tools.
+        Each offering is designed to be repairable, adaptable, and rooted in lived human experience—
+        not optimization, surveillance, or extraction.
+      </p>
+      <p class="muted">
+        These are not products. They are companions.
+      </p>
     </section>
 
     <section class="card">
-      <h2>Modules</h2>
-      <div class="modules">
+      <h2>Core offerings</h2>
 
-        <div class="module">
-          <h3>CodeTape</h3>
-          <div class="tag">Resonance paths</div>
-          <p>Low-cost sensing patterns and conductive paths for presence, pressure, and pulse.</p>
-          <a href="code-tape/">Open folder ↗</a>
+      <div class="grid">
+
+        <div class="item">
+          <h3><a href="./dreamhearth/">DreamHearth</a></h3>
+          <p class="muted">
+            A place where nothing is asked of you but rest.
+            A modular nest-and-shell bedding system that grows with a human across a lifetime.
+          </p>
         </div>
 
-        <div class="module">
-          <h3>MythGear Gloves v1</h3>
-          <div class="tag">Hands listen</div>
-          <p>Resonance-cup palms and jute textures for listening through contact.</p>
-          <a href="gloves/index.html">Gloves module ↗</a>
+        <div class="item">
+          <h3><a href="./spidervine/">SpiderVine</a></h3>
+          <p class="muted">
+            Body-powered line travel and movement gear.
+            Learning, play, and utility through direct engagement with gravity.
+          </p>
         </div>
 
-        <div class="module">
-          <h3>MythGear Shoes v1</h3>
-          <div class="tag">Feet remember · in progress</div>
-          <p>Minimalist movement shoes with Achilles rail and resonance plate.</p>
-          <a href="shoes/">Open folder ↗</a>
+        <div class="item">
+          <h3><a href="./sunhearth/">SunHearth</a></h3>
+          <p class="muted">
+            Passive warmth, safety, and environmental comfort.
+            Tools for creating hearth without flame.
+          </p>
         </div>
 
-        <div class="module">
-          <h3>MythGear Cards</h3>
-          <div class="tag">Field micro-sequences</div>
-          <p>Short, printable cards for listening, grounding, and pulse awareness.</p>
-          <a href="cards/">Open folder ↗</a>
+        <div class="item">
+          <h3><a href="./gloves/">Gloves</a></h3>
+          <p class="muted">
+            Tactile sensing gear for hands.
+            Attention, feedback, and gentle accountability through touch.
+          </p>
         </div>
 
-        <div class="module">
-          <h3>SunHearth</h3>
-          <div class="tag">Circle of Warmth</div>
-          <p>Micro-radiant heat inquiry for supervised classroom and field learning.</p>
-          <a href="sunhearth/">Open folder ↗</a>
+        <div class="item">
+          <h3><a href="./shoes/">Shoes</a></h3>
+          <p class="muted">
+            Ground-contact footwear experiments.
+            Balance, listening, and movement awareness.
+          </p>
+        </div>
+
+        <div class="item">
+          <h3><a href="./cards/">Cards</a></h3>
+          <p class="muted">
+            Prompt and reflection tools.
+            Small artifacts that shift attention rather than command it.
+          </p>
+        </div>
+
+        <div class="item">
+          <h3><a href="./code-tape/">Code Tape</a></h3>
+          <p class="muted">
+            Pattern language and documentation experiments.
+            How knowledge travels when it stays repairable.
+          </p>
         </div>
 
       </div>
     </section>
 
     <section class="card">
-      <h2>Docs</h2>
-      <ul class="folder-map">
-        <li><a href="docs/field-protocol.md">Field Protocol ↗</a></li>
-        <li><a href="docs/mythgear-levels.md">MythGear Levels ↗</a></li>
-        <li><a href="docs/mythgear-set.md">MythGear Set ↗</a></li>
+      <h2>Commons ethic</h2>
+      <p>
+        MythGear favors:
+      </p>
+      <ul>
+        <li>repair over replacement</li>
+        <li>learning over automation</li>
+        <li>dignity over control</li>
+        <li>presence over performance</li>
       </ul>
+      <p class="muted">
+        If a tool removes agency, it does not belong here.
+      </p>
     </section>
 
-    <footer>
-      <span>MythGear Commons · Flower Road</span>
-      <span>CC BY-NC-SA 4.0 · Built for shared stewardship</span>
-    </footer>
+  </main>
 
-  </div>
+  <footer>
+    <div class="wrap">
+      <p>
+        <strong>MythGear Commons</strong> — part of the Fox’s Anvil ecosystem.
+        <span class="muted">Open tools for inhabiting a human life.</span>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
