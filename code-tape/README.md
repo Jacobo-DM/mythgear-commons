@@ -13,3 +13,8 @@ It is designed to be:
 
 CodeTape is not a product.  
 It is a commons blueprint for distributed care.
+
+CodeTape operates in two layers:
+
+1. Practical — a physical sensing strip with low-power communication.
+2. Cultural — a reminder that infrastructure can be rooted in reciprocity rather than extraction.
