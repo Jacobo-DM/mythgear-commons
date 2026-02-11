@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HearthWheel — MythGear Commons</title>
+  <meta name="description" content="HearthWheel is a local coordination hub for distributed care: 6 petals + 1 core. A Fox’s Anvil Open Resilience offering." />
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#111824;
+      --text:#e9eef5;
+      --muted:#b7c2cf;
+      --line:rgba(233,238,245,.16);
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:var(--text); text-decoration:underline; text-underline-offset:.2em;}
+    a:focus{outline:2px solid var(--line); outline-offset:3px;}
+    header{border-bottom:1px solid var(--line);}
+    footer{border-top:1px solid var(--line); color:var(--muted); font-size:14px;}
+    .wrap{max-width:940px; margin:0 auto; padding:26px 18px;}
+    h1{margin:0 0 6px; font-size:28px;}
+    h2{margin:0 0 10px; font-size:18px;}
+    p{margin:10px 0;}
+    ul{margin:10px 0 0 20px;}
+    .muted{color:var(--muted);}
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:18px;
+      margin:16px 0;
+    }
+    nav a{
+      display:inline-block;
+      margin-right:10px;
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      text-decoration:none;
+    }
+    nav a:hover{background:rgba(255,255,255,.04);}
+    .quote{
+      border-left:4px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:12px;
+      padding:12px 14px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:12px;
+      margin-top:12px;
+    }
+    .pill{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      background:rgba(255,255,255,.02);
+    }
+    .pill strong{display:block; margin-bottom:6px;}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>HearthWheel</h1>
+      <p class="muted">Local coordination hub for distributed care — 6 petals + 1 core.</p>
+      <nav aria-label="Primary">
+        <a href="../">MythGear</a>
+        <a href="./README.md">README</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>What it is</h2>
+      <p>
+        HearthWheel lives in kitchens, living rooms, and shared spaces—where “weather” (needs, conditions, offers, and alerts)
+        can move through a community without central control or extraction.
+      </p>
+      <div class="quote">
+        <strong>Infrastructure for care, not control.</strong>
+        <p class="muted">A Fox’s Anvil Open Resilience offering.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Core + petals</h2>
+      <div class="grid">
+        <div class="pill">
+          <strong>Core (always present)</strong>
+          <p class="muted">
+            Hardware interface, timekeeping, local storage, encryption, connectivity,
+            and CodeTape gateway (distributed sensing + exchange).
+          </p>
+        </div>
+        <div class="pill">
+          <strong>Petals (configurable)</strong>
+          <p class="muted">
+            Six modular functions that can be added, removed, or swapped without breaking the system.
+            Each petal is taught through story and felt memory.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>The six petals (v1)</h2>
+      <ul>
+        <li><strong>Guardian</strong> — care coordination (meds/meals/water/exercise/records). No diagnosis, no dosing advice.</li>
+        <li><strong>Home</strong> — household rhythms and safety cues.</li>
+        <li><strong>Community</strong> — neighbor mesh, mutual aid, local alerts.</li>
+        <li><strong>DiscoveryMode</strong> — curiosity prompts and learning trails.</li>
+        <li><strong>RageDance</strong> — return-to-body signals and movement rituals.</li>
+        <li><strong>Regenerative Gaming</strong> — cooperative quests and repair play.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Signals, not surveillance</h2>
+      <p class="muted">
+        HearthWheel treats information as signals (with scope and expiry), so old data doesn’t haunt and power doesn’t centralize.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>“Weather passing through a community”</h2>
+      <p class="muted">
+        Story-first application layer: signals move like weather—arrive, inform, and fade—without becoming a feed or a platform.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>
+        <strong>HearthWheel</strong> — MythGear Commons.
+        <span class="muted">6 petals + 1 core. Local-first. Dignity-preserving.</span>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
 
