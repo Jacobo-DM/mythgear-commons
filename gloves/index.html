@@ -6,309 +6,282 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="MythGear Gloves v1 — resonance-cup palms for micro-listening through contact. Module page for MythGear Commons.">
 
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Instrument+Sans:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #05070b;
-      --bg-soft: #0b1016;
-      --card-bg: #0f172a;
-      --card-soft: #111827;
-      --accent: #fbbf24;
-      --accent-soft: #fde68a;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --shadow-soft: 0 22px 55px rgba(0, 0, 0, 0.75);
-      --radius-lg: 18px;
-      --radius-md: 14px;
-      --radius-pill: 999px;
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --ink:    #16120e;
+      --paper:  #f4f0e8;
+      --warm:   #e8e0cc;
+      --line:   rgba(22,18,14,0.14);
+      --line-s: rgba(22,18,14,0.07);
+      --rust:   #9c4a1a;
+      --moss:   #4a6340;
+      --slate:  #3a4a5c;
+      --ochre:  #b8842a;
+      --muted:  #6e6050;
+      --faint:  #a09080;
+      --max:    860px;
     }
-
-    * { box-sizing: border-box; }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
     body {
-      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
       min-height: 100vh;
-      font-family: var(--font-main);
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 55%),
-        radial-gradient(circle at top, #020617 0, #020617 45%, #020617 100%);
-      display: flex;
-      justify-content: center;
-      padding: 24px 14px 34px;
     }
+    a { color: var(--rust); text-decoration: none; transition: color .18s; }
+    a:hover { color: var(--ink); text-decoration: underline; }
 
-    .page {
-      width: 100%;
-      max-width: 1040px;
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
-      border-radius: 24px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      box-shadow: var(--shadow-soft);
-      padding: 20px 18px 26px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
+    /* ── Nav ── */
+    .mg-nav {
+      background: var(--ink);
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 2px solid var(--rust);
     }
-
-    @media (min-width: 900px) {
-      .page { padding: 26px 28px 32px; gap: 22px; }
+    .mg-nav-inner {
+      max-width: var(--max); margin: 0 auto;
+      padding: .55rem 1.4rem;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem; flex-wrap: wrap;
     }
-
-    header { display: flex; flex-direction: column; gap: 10px; }
-
-    .top-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .title-block h1 {
-      font-size: clamp(1.7rem, 3vw, 2.25rem);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin: 0 0 4px;
-    }
-
-    .title-block .byline {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
+    .mg-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem; letter-spacing: .04em;
+      color: var(--paper); text-decoration: none;
       white-space: nowrap;
     }
+    .mg-brand:hover { color: #fff; text-decoration: none; }
+    .mg-nav-links { list-style: none; display: flex; flex-wrap: wrap; gap: 0; }
+    .mg-nav-links a {
+      color: var(--faint); font-size: .76rem; padding: .22rem .48rem;
+      text-decoration: none; letter-spacing: .04em;
+      transition: color .14s;
+    }
+    .mg-nav-links a:hover  { color: var(--paper); text-decoration: none; }
+    .mg-nav-links a.active { color: var(--ochre); }
 
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 14px rgba(251, 191, 36, 0.9);
+    /* ── Page wrapper ── */
+    .mg-page {
+      max-width: var(--max); margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
     }
 
-    .tagline {
-      font-size: 0.98rem;
-      color: var(--muted);
-      max-width: 760px;
-      margin: 0;
+    /* ── Page header ── */
+    .mg-header {
+      margin-bottom: 2.8rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .mg-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--faint);
+      margin-bottom: .7rem;
+    }
+    .mg-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 400; line-height: 1.1;
+      color: var(--ink); letter-spacing: .01em;
+      margin-bottom: .5rem;
+    }
+    .mg-sub {
+      font-size: .95rem; color: var(--muted);
+      max-width: 58ch; line-height: 1.65;
+    }
+    .mg-back {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--faint);
+      text-decoration: none; margin-bottom: 2rem;
+      transition: color .18s;
+    }
+    .mg-back:hover { color: var(--rust); text-decoration: none; }
+    .mg-back::before { content: '← '; }
+
+    /* ── Typography ── */
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400; font-size: 1.4rem;
+      color: var(--ink); margin: 2rem 0 .5rem;
+      letter-spacing: .01em;
+    }
+    h3 {
+      font-family: 'DM Mono', monospace;
+      font-size: .78rem; font-weight: 400;
+      text-transform: uppercase; letter-spacing: .14em;
+      color: var(--rust); margin: 1.5rem 0 .4rem;
+    }
+    p { font-size: .95rem; color: var(--muted); margin-bottom: .8rem; }
+    p strong { color: var(--ink); font-weight: 400; }
+    ul, ol { padding-left: 1.2rem; margin-bottom: 1rem; }
+    li { font-size: .93rem; color: var(--muted); margin-bottom: .3rem; }
+    li strong { color: var(--ink); font-weight: 400; }
+
+    /* ── Card ── */
+    .mg-card {
+      background: var(--warm);
+      border: 1px solid var(--line);
+      padding: 1.3rem 1.4rem;
+      margin: 1.2rem 0;
+    }
+    .mg-card h2 { margin-top: 0; }
+    .mg-card h3:first-child { margin-top: 0; }
+
+    /* ── Callout ── */
+    .mg-callout {
+      border-left: 3px solid var(--rust);
+      padding: .6rem .9rem;
+      background: rgba(156,74,26,.06);
+      font-size: .88rem; color: var(--muted);
+      margin: .9rem 0;
+    }
+    .mg-callout strong { color: var(--rust); font-weight: 400; }
+    .mg-note {
+      border-left: 3px solid var(--moss);
+      padding: .6rem .9rem;
+      background: rgba(74,99,64,.06);
+      font-size: .88rem; color: var(--muted);
+      margin: .9rem 0;
+    }
+    .mg-note strong { color: var(--moss); font-weight: 400; }
+    .mg-safety {
+      border-left: 3px solid #8b2000;
+      padding: .6rem .9rem;
+      background: rgba(139,32,0,.06);
+      font-size: .88rem; color: #5c1a00;
+      margin: .9rem 0;
     }
 
-    a { color: var(--accent-soft); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .crumbs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      font-size: 0.88rem;
-      color: var(--muted);
+    /* ── Blockquote ── */
+    blockquote {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic; font-size: 1.15rem;
+      color: var(--ink); border-left: 2px solid var(--ochre);
+      padding-left: 1rem; margin: 1.4rem 0;
+      line-height: 1.6;
     }
 
-    .crumbs code {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      padding: 1px 6px;
-      border-radius: 6px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-    }
+    /* ── Rule ── */
+    .mg-rule { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
 
-    .grid {
+    /* ── Pill ── */
+    .mg-pill {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: .65rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--faint);
+      border: 1px solid var(--line);
+      padding: .1rem .5rem; margin: .15rem .2rem .15rem 0;
+    }
+    .mg-pill.rust  { color: var(--rust); border-color: rgba(156,74,26,.3); }
+    .mg-pill.moss  { color: var(--moss); border-color: rgba(74,99,64,.3); }
+    .mg-pill.slate { color: var(--slate); border-color: rgba(58,74,92,.3); }
+
+    /* ── Grid ── */
+    .mg-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      margin: 1.2rem 0;
+      background: var(--line);
     }
-
-    @media (min-width: 900px) {
-      .grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr); gap: 18px; }
+    .mg-grid-item {
+      background: var(--paper);
+      padding: 1.1rem 1.2rem;
     }
+    .mg-grid-item h3 { margin-top: 0; }
 
-    .card {
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.98));
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      padding: 16px 15px;
+    /* ── Device card (index grid) ── */
+    .mg-device-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      background: var(--line);
+      margin: 1.4rem 0;
     }
-
-    @media (min-width: 900px) {
-      .card { padding: 18px 18px; }
+    .mg-device {
+      background: var(--paper);
+      padding: 1.2rem;
+      transition: background .18s;
     }
-
-    .card h2 {
-      font-size: 1.06rem;
-      margin: 0 0 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #f9fafb;
-    }
-
-    .card h3 {
-      margin: 14px 0 8px;
-      font-size: 0.98rem;
-      letter-spacing: 0.04em;
-      color: #f3f4f6;
-    }
-
-    .card p {
-      margin: 0 0 0.75em;
-      font-size: 0.96rem;
-      color: #e5e7eb;
-    }
-
-    .card ul, .card ol {
-      margin: 0;
-      padding-left: 1.1rem;
-      font-size: 0.95rem;
-      color: #e5e7eb;
-    }
-
-    .card li + li { margin-top: 0.3em; }
-
-    .pill-row {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .pill {
-      padding: 3px 10px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .callout {
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: rgba(2, 6, 23, 0.45);
-      padding: 12px 12px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(55, 65, 81, 0.95);
-      background: rgba(15, 23, 42, 0.85);
-      color: var(--accent-soft);
-      font-size: 0.88rem;
+    .mg-device:hover { background: var(--warm); }
+    .mg-device-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem; color: var(--ink);
+      margin-bottom: .3rem; display: block;
       text-decoration: none;
-      white-space: nowrap;
+    }
+    .mg-device-name:hover { color: var(--rust); text-decoration: none; }
+    .mg-device-desc { font-size: .85rem; color: var(--faint); line-height: 1.55; }
+    .mg-device-status {
+      font-family: 'DM Mono', monospace;
+      font-size: .62rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--faint);
+      margin-top: .6rem;
     }
 
-    .link-btn:hover { text-decoration: none; border-color: rgba(251, 191, 36, 0.55); }
-
-    .mini-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 10px;
-      margin-top: 10px;
+    /* ── Footer ── */
+    .mg-footer {
+      margin-top: 4rem; padding-top: 1.4rem;
+      border-top: 2px solid var(--line);
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem; letter-spacing: .08em;
+      color: var(--faint); line-height: 1.9;
     }
+    .mg-footer a { color: var(--faint); }
+    .mg-footer a:hover { color: var(--rust); }
 
-    @media (min-width: 700px) {
-      .mini-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      .mg-page { padding: 2rem 1.1rem 4rem; }
     }
-
-    .mini {
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.92);
-      padding: 12px 12px;
-    }
-
-    .mini strong { color: #f3f4f6; }
-
-    .muted { color: var(--muted); }
-
-    footer {
-      margin-top: 2px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
-      font-size: 0.82rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-      justify-content: space-between;
-    }
-
-    .kbd {
-      font-family: var(--font-mono);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      border-bottom-color: rgba(55, 65, 81, 0.7);
-      background: rgba(15, 23, 42, 0.85);
-      padding: 1px 6px;
-      border-radius: 6px;
-      color: #d1d5db;
-      font-size: 0.82rem;
+    @media print {
+      .mg-nav { display: none; }
+      .mg-safety { border-color: #000; background: none; }
     }
   </style>
+
 </head>
 
 <body>
-  <div class="page">
-    <header>
-      <div class="top-row">
-        <div class="title-block">
-          <h1>MythGear Gloves v1</h1>
-          <div class="byline">Elumannín + Jacobo</div>
-        </div>
-        <div class="badge">
-          <span class="badge-dot"></span>
-          Hands listen · v1 in progress
-        </div>
-      </div>
 
-      <p class="tagline">
-        A listening tool you wear: resonance-cup palms + jute grit textures for micro-contact, micro-movement, and field practice.
-      </p>
+<nav class="mg-nav" aria-label="Primary">
+  <div class="mg-nav-inner">
+    <a href="../index.html" class="mg-brand">MythGear Commons</a>
+    <ul class="mg-nav-links">
+      <li><a href="../index.html" class="active">Home</a></li>
+      <li><a href="../sunhearth/index.html" class="active">SunHearth</a></li>
+      <li><a href="../dreamhearth/dreamhearth/index.html" class="active">DreamHearth</a></li>
+      <li><a href="../spidervine/index.html" class="active">SpiderVine</a></li>
+      <li><a href="../hearthwheel/index.html" class="active">HearthWheel</a></li>
+      <li><a href="../gloves/index.html" class="active">Gloves</a></li>
+      <li><a href="../code-tape/index.html" class="active">CodeTape</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="mg-page">
+<a href="../index.html" class="mg-back">MythGear Commons</a>
+<div class="mg-header">
+  <div class="mg-tag">MythGear · Gloves v1</div>
+  <h1>MythGear Gloves v1</h1>
+  <p class="mg-sub">Resonance-cup palms for micro-listening through contact. Hands listen.</p>
+</div>
+<div class="page">
+    
 
-      <div class="crumbs">
-        <span><a href="../index.html">← MythGear Commons</a></span>
-        <span>·</span>
-        <span><code>gloves/</code></span>
-        <span class="muted">·</span>
-        <span class="muted">module page</span>
-      </div>
-    </header>
-
-    <div class="grid">
-      <section class="card">
+    <div class="mg-grid">
+      <section class="mg-card">
         <h2>Start Here</h2>
         <p>
           This module is the “hands” half of the MythGear Set:
@@ -333,26 +306,26 @@
         </ol>
 
         <div class="pill-row">
-          <span class="pill">somatic literacy</span>
-          <span class="pill">micro-movement</span>
-          <span class="pill">field practice</span>
-          <span class="pill">rageDance compatible</span>
+          <span class="mg-pill">somatic literacy</span>
+          <span class="mg-pill">micro-movement</span>
+          <span class="mg-pill">field practice</span>
+          <span class="mg-pill">rageDance compatible</span>
         </div>
 
         <h3>Design intent</h3>
-        <p class="muted" style="margin-bottom:0;">
+        <p style="color:var(--faint);" style="margin-bottom:0;">
           You started with “<strong>32 points/joints + wrists</strong>.” This build compresses complexity into
           a smaller set of reliable “listening moves” — <strong>reduce to ~12</strong> and make them fine-tunable.
         </p>
       </section>
 
-      <aside class="card">
+      <aside class="mg-card">
         <h2>Core Architecture</h2>
 
         <div class="mini-grid">
           <div class="mini">
             <p style="margin:0 0 6px;"><strong>Palm</strong> · resonance cup</p>
-            <p class="muted" style="margin:0;">
+            <p style="color:var(--faint);" style="margin:0;">
               Shallow concavity (target 3–5 mm) that “hears” vibration and returns a note through the hand.
               Optional porous jute lining. Optional removable disk.
             </p>
@@ -360,36 +333,36 @@
 
           <div class="mini">
             <p style="margin:0 0 6px;"><strong>Outer palm</strong> · jute & grit</p>
-            <p class="muted" style="margin:0;">
+            <p style="color:var(--faint);" style="margin:0;">
               Grip + abrasion layer with flex channels aligned to palm lines for micro-movement fidelity.
             </p>
           </div>
 
           <div class="mini">
             <p style="margin:0 0 6px;"><strong>Back of hand</strong> · breathable</p>
-            <p class="muted" style="margin:0;">
+            <p style="color:var(--faint);" style="margin:0;">
               Woven textile. Optional “pulse lane” (future CodeTape integration).
             </p>
           </div>
 
           <div class="mini">
             <p style="margin:0 0 6px;"><strong>Closure</strong> · strap system</p>
-            <p class="muted" style="margin:0;">
+            <p style="color:var(--faint);" style="margin:0;">
               Field-repairable. Candidates: velcro / button / “claw” tab. (Notes: “straps like the ones from Japan.”)
             </p>
           </div>
         </div>
 
-        <div class="callout" style="margin-top:12px;">
+        <div class="mg-callout" style="margin-top:12px;">
           <strong>Reminder</strong><br/>
           Hands are not gripping. Hands are listening.
         </div>
       </aside>
     </div>
 
-    <section class="card">
+    <section class="mg-card">
       <h2>Movement Map</h2>
-      <p class="muted">
+      <p style="color:var(--faint);">
         The glove is not only “hand.” It is a pathway that can climb:
         <strong>wrist → elbow → shoulder</strong> (and even to <strong>waist</strong>) so micro-contact becomes whole-body calibration.
       </p>
@@ -407,14 +380,14 @@
             <li>Hover (near-contact)</li>
             <li>Pulse lane trace (future)</li>
           </ul>
-          <p class="muted" style="margin:8px 0 0;">
+          <p style="color:var(--faint);" style="margin:8px 0 0;">
             We can refine the “official 12” as you test.
           </p>
         </div>
 
         <div class="mini">
           <p style="margin:0 0 6px;"><strong>Why the reduction matters</strong></p>
-          <p class="muted" style="margin:0;">
+          <p style="color:var(--faint);" style="margin:0;">
             Fewer moves = more repeatable listening, less performance noise.
             The glove becomes a training instrument, not a “tech glove.”
           </p>
@@ -422,9 +395,9 @@
       </div>
     </section>
 
-    <section class="card">
+    <section class="mg-card">
       <h2>Palm Pad Questions</h2>
-      <p class="muted">
+      <p style="color:var(--faint);">
         From your notes: palm pad <em>material</em> + <em>size</em>. These are v1 decision points.
       </p>
 
@@ -447,17 +420,16 @@
             <li>Medium cup: ~22–28 mm</li>
             <li>Large cup: ~28–34 mm</li>
           </ul>
-          <p class="muted" style="margin:8px 0 0;">
+          <p style="color:var(--faint);" style="margin:8px 0 0;">
             (These are placeholders — we’ll lock them after your first fit test.)
           </p>
         </div>
       </div>
     </section>
 
-    <footer>
-      <span>MythGear Gloves v1 · <span class="kbd">gloves/index.html</span></span>
-      <span>CC BY-NC-SA 4.0 (unless otherwise noted)</span>
-    </footer>
+    
   </div>
+</div>
+
 </body>
 </html>

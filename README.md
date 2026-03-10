@@ -1,63 +1,105 @@
-# <Project Name>
+# MythGear Commons
 
-**Elumannín + Jacobo**  
-*(and named collaborators, if any)*
+**Elumannín + Jacobo (JH Durbin)**
+Part of the Fox's Anvil ecosystem.
 
-<Short, 1–3 sentence description of what this project is and who it is for.>
-
----
-
-## Purpose
-
-- <Goal 1>  
-- <Goal 2>  
-- <Goal 3>  
+Open, human-scale tools for movement, rest, warmth, and repair.
+Not products. Companions.
 
 ---
 
-## Current Modules
+## What this is
 
-- **Module 1** – short description.  
-- **Module 2** – short description.  
-- **Module 3** – short description.  
+MythGear is a commons of practical, body-centered tools designed to be
+repairable, adaptable, and rooted in lived human experience —
+not optimization, surveillance, or extraction.
 
-(Add links if there are HTML pages or subfolders, e.g.  
-`[Module 1 Overview](path/to/module-1.html)`.)
+Three principles run through everything here:
+
+- **low energy** — works without motors, grids, or platforms
+- **repairable** — fixable with simple tools and common materials
+- **adaptable** — adjusts to local context, culture, and need
+
+If a tool removes agency, it does not belong here.
 
 ---
 
-## Design Principles
+## Devices & tools
 
-- **Principle 1** – explanation.  
-- **Principle 2** – explanation.  
-- **Principle 3** – explanation.  
+| Device | What it is | Status |
+|---|---|---|
+| [SunHearth](sunhearth/) | Micro-flame teaching instrument for warmth and attention | Active |
+| [DreamHearth](dreamhearth/dreamhearth/) | Modular nest-and-shell bedding system. A right to rest. | Active |
+| [SpiderVine](spidervine/) | Body-powered line travel and movement gear | Concept anchored |
+| [HearthWheel](hearthwheel/) | Local care coordination hub, 6 petals + 1 core | Architecture anchored |
+| [Gloves](gloves/) | Resonance-cup palms for micro-listening through contact | v1 in progress |
+| [Shoes](shoes/) | Resonance-plate footwear for ground-contact awareness | v1 in progress |
+| [CodeTape](code-tape/) | Commons sensing strip and symbol. Two layers: practical and cultural. | Active |
+
+---
+
+## Practice
+
+- **[Field Protocol v1](docs/field-protocol.md)** — hands, feet, whole body. The core MythGear practice sequence.
+- **[MythGear Levels](docs/mythgear-levels.md)** — five stages of listening capacity, from Surface Listener to Fieldkeeper.
+- **[MythGear Set](docs/mythgear-set.md)** — Gloves + Shoes as a paired full-body resonance rig.
+- **[Cards](cards/)** — Hands Listen · Feet Remember · Pulse Bridge.
+
+---
+
+## Folder map
+
+```
+mythgear-commons/
+├── index.html              ← start here
+├── README.md
+│
+├── sunhearth/              ← warmth and attention
+├── dreamhearth/            ← rest and dignity
+├── spidervine/             ← movement through gravity
+├── hearthwheel/            ← distributed care
+├── gloves/                 ← hands listen
+├── shoes/                  ← feet remember
+├── code-tape/              ← commons sensing infrastructure
+│
+├── docs/                   ← field protocol, levels, set documentation
+├── cards/                  ← printable practice cards
+└── Borderlands/            ← where MythGear touches other practices
+```
+
+---
+
+## Commons ethic
+
+MythGear favors:
+
+- repair over replacement
+- learning over automation
+- dignity over control
+- presence over performance
+
+These are not design constraints. They are commitments.
+
+---
+
+## Relationship to other practices
+
+- **RageDance** — MythGear Gloves and Shoes are RageDance-compatible. The RageDance petal lives in HearthWheel.
+- **DiscoveryMode** — SunHearth Circle of Warmth is a DiscoveryMode-compatible classroom inquiry.
+- **Circles in Motion** — MythGear tools support embodied movement practice at all levels.
 
 ---
 
 ## License
 
-Unless otherwise noted, materials in this repo are shared under a  
-**Creative Commons Attribution–NonCommercial–ShareAlike 4.0 International license (CC BY-NC-SA 4.0).**
+Unless otherwise noted, all materials in this repo are shared under
+**Creative Commons Attribution–NonCommercial–ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.
 
-> You are free to **copy, share, and adapt** the materials in this repo for non-commercial use,  
-> as long as you **credit “Elumannín + Jacobo” (and listed collaborators)**,  
-> indicate if changes were made, and share any derivative works  
-> under the **same license**.
+You are free to copy, share, and adapt for non-commercial use,
+as long as you credit the origin and share derivatives under the same license.
 
-For uses outside these terms (commercial manufacture, resale, proprietary integration, etc.), please contact the authors to discuss a separate agreement rooted in stewardship and reciprocity.
+CodeTape uses **CC BY-SA 4.0** (commercial use permitted with attribution).
 
 ---
 
-## Folder Map
-
-- `<folder-1>/` – what lives here.  
-- `<folder-2>/` – what lives here.  
-- `<folder-3>/` – what lives here.  
-
----
-
-## How to Use This Repo
-
-- **For teachers / facilitators** – how to plug this into class or community.  
-- **For makers / coders / storytellers** – how to prototype or extend.  
-- **For future you** – any notes you want to remember about how this project is meant to feel.
+*Open tools for inhabiting a human life. Repair it. Adapt it. Pass it on.*
